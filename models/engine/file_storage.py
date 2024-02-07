@@ -38,7 +38,7 @@ class FileStorage:
         serialized = {}
 
         for key, value in FileStorage.__objects.items():
-            serialized[key] = value.save_dict()
+            serialized[key] = value.to_dict()
         
         with open(FileStorage.__fpath, "w", encoding="utf-8") as jsonF:
             dump(serialized, jsonF)
