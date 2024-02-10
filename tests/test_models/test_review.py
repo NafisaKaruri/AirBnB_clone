@@ -36,6 +36,6 @@ class TestReview(unittest.TestCase):
         """Test if text is initialized with an empty string"""
         self.assertEqual(self.r.text, "")
 
-        
+
 if __name__ == "__main__":
     unittest.main()

@@ -28,6 +28,6 @@ class TestState(unittest.TestCase):
         """Test if name is intialized with an empty string"""
         self.assertEqual(self.s.name, "")
 
-        
+
 if __name__ == "__main__":
     unittest.main()

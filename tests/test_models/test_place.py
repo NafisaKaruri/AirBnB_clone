@@ -79,7 +79,7 @@ class TestPlace(unittest.TestCase):
     def test_latitudeVal(self):
         """Test if latitude is initialized to a value of 0.0"""
         self.assertEqual(self.p.latitude, 0.0)
-    
+
     def test_longitudeType(self):
         """Test if longitude is of type float"""
         self.assertIsInstance(self.p.longitude, float)

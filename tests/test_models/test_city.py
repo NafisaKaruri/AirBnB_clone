@@ -32,5 +32,6 @@ class TestCity(unittest.TestCase):
         """Test if name is intialized with an empty string"""
         self.assertEqual(self.c.name, "")
 
+
 if __name__ == "__main__":
     unittest.main()

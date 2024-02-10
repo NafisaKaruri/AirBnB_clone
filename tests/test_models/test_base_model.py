@@ -4,6 +4,7 @@
 from models.base_model import BaseModel
 from datetime import datetime
 import unittest
+from unittest.mock import patch
 import uuid
 
 
@@ -43,11 +44,13 @@ class TestBaseModel(unittest.TestCase):
         b = BaseModel()
         self.assertEqual(f"[BaseModel] ({b.id}) {b.__dict__}", str(b))
 
-    def test_save(self):
+    @patch('models.storage.save')
+    def test_save(self, mock_save):
         """Test the save function"""
         b = BaseModel()
         b.save()
         self.assertIsInstance(b.updated_at, datetime)
+        mock_save.assert_called_once()
 
     def test_to_dict(self):
         """Test to_dict function"""
@@ -55,9 +58,24 @@ class TestBaseModel(unittest.TestCase):
         b_dict = b.to_dict()
         self.assertIsInstance(b_dict, dict)
 
+    def test_to_dict_contains_class_name(self):
+        """Test to_dict contains the class name"""
+        b = BaseModel()
+        b_dict = b.to_dict()
+        self.assertEqual("BaseModel", b_dict['__class__'])
+
+    def test_to_dict_formats_timestamps(self):
+        """Test to_dict formats timestamps correctly"""
+        b = BaseModel()
+        b_dict = b.to_dict()
+        self.assertTrue('created_at' in b_dict)
+        self.assertTrue('updated_at' in b_dict)
+        self.assertIsInstance(b_dict['created_at'], str)
+        self.assertIsInstance(b_dict['updated_at'], str)
+
     # --------------- Test task 4 ---------------
-    def test_args(self):
-        """Test args"""
+    def test_args_raises_exception(self):
+        """Test args raises an exception"""
         b = BaseModel(1)
 
     def test_kwargs(self):
