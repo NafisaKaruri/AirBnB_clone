@@ -9,8 +9,4 @@ class Amenity(BaseModel):
     Args:
         name (str): the Amenity name"""
 
-    def __init(self, *args, **kwargs):
-        """The class constructor"""
-        super().__init__(*args, **kwargs)
-
-        name = ""
+    name = ""

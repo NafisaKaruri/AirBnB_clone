@@ -8,9 +8,6 @@ class City(BaseModel):
     Args:
         state_id (str): the State.id
         name (str): the state name"""
-    def __init__(self, *args, **kwargs):
-        """The class constructor"""
-        super().__init__(*args, **kwargs)
 
-        state_id = ""
-        name = ""
+    state_id = ""  # it will be the State.id
+    name = ""

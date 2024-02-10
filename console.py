@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-"""
+"""This is the console module, it defines the HBNBCommand"""
 
 import cmd
 import json
@@ -15,8 +14,7 @@ from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
-    """
-    """
+    """This class contains the entry point of the command interpreter."""
     prompt = '(hbnb) '
     data = {}
     classes = ['BaseModel', 'User', 'State',

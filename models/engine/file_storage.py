@@ -65,6 +65,7 @@ class FileStorage:
                 for objVal in deserialized.values():
                     className = objVal["__class__"]
                     classObject = allClasses[className]
-                    self.new(classObject(**objVal))
+                    if classObject:
+                        self.new(classObject(**objVal))
         except FileNotFoundError:
             pass

@@ -9,10 +9,7 @@ class Review(BaseModel):
         place_id (str): the Place.id
         user_id (str): the User.id
         text (str): the review"""
-    def __init__(self, *args, **kwargs):
-        """The class constructor"""
-        super().__init__(*args, **kwargs)
 
-        place_id = ""
-        user_id = ""
-        text = ""
+    place_id = ""
+    user_id = ""
+    text = ""
