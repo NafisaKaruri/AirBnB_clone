@@ -17,7 +17,7 @@ class FileStorage:
 
         Attr:
             __objects (dictionary): dictionary holding all instances
-            __fpath (string): the path of the JSON file
+            __file_path (string): the path of the JSON file
 
         Methods:
             all(self)
@@ -26,7 +26,7 @@ class FileStorage:
             reload(self)
     """
     __objects = {}
-    __fpath = "file.json"
+    __file_path = "file.json"
 
     def all(self):
         """returns the ___objects dictionary"""
@@ -46,12 +46,12 @@ class FileStorage:
         for key, value in FileStorage.__objects.items():
             serialized[key] = value.to_dict()
 
-        with open(FileStorage.__fpath, "w", encoding="utf-8") as jsonF:
+        with open(FileStorage.__file_path, "w", encoding="utf-8") as jsonF:
             dump(serialized, jsonF)
 
     def reload(self):
         """deserializes the JSON file"""
-        allClasses = {'BaseModel': BaseModel,
+        all_classes = {'BaseModel': BaseModel,
                       'User': User,
                       'State': State,
                       'City': City,
@@ -60,12 +60,12 @@ class FileStorage:
                       'Review': Review}
 
         try:
-            with open(FileStorage.__fpath, encoding="utf-8") as jsonStr:
+            with open(FileStorage.__file_path, encoding="utf-8") as jsonStr:
                 deserialized = load(jsonStr)
-                for objVal in deserialized.values():
-                    className = objVal["__class__"]
-                    classObject = allClasses[className]
-                    if classObject:
-                        self.new(classObject(**objVal))
+                for obj_val in deserialized.values():
+                    class_name = obj_val["__class__"]
+                    class_object = all_classes[class_name]
+                    if class_object:
+                        self.new(class_object(**obj_val))
         except FileNotFoundError:
             pass
