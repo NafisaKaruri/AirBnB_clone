@@ -11,6 +11,7 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -136,6 +137,47 @@ by adding or updating attribute.
                 pass
             setattr(instance, args[2], args[3])
             instance.save()
+
+    def count(self, cls):
+        """Retrieves all instances of a class
+        """
+        if cls not in self.classes:
+            print("** class doesn't exist **")
+        else:
+            counter = 0
+            for instance in models.storage.all().values():
+                if type(instance).__name__ == cls:
+                    counter += 1
+            print(counter)
+
+    def parameters(self, args):
+        """Gets the parameters as a string
+        """
+        string = [args[0]]  # className
+        pattern = re.compile(r'\((.*)\)')
+        arguments = pattern.findall(args[1])
+        string.extend(arguments[0].split(','))
+        return " ".join(string)
+
+    def default(self, line):
+        """Handles unrecognized commands
+        """
+        args = line.split('.')
+        if len(args) == 2:
+            if args[1] == "all()":
+                self.do_all(args[0])
+            elif args[1] == "count()":
+                self.count(args[0])
+            elif args[1].startswith("show("):
+                self.do_show(self.parameters(args))
+            elif args[1].startswith("destroy("):
+                self.do_destroy(self.parameters(args))
+            elif args[1].startswith("update("):
+                self.do_update(self.parameters(args))
+            else:
+                super().default(line)
+        else:
+            super().default(line)
 
 
 if __name__ == '__main__':
