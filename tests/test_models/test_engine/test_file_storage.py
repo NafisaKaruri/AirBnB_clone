@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Test File Storage module"""
 
+import models
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 import unittest
@@ -39,6 +40,23 @@ class TestFileStorage(unittest.TestCase):
         self.fs.new(self.bm)
         key = self.bm.__class__.__name__ + "." + self.bm.id
         self.assertEqual(self.fs.all()[key], self.bm)
+
+    def test_save(self):
+        """Test if the save method serializes __objects to the json file"""
+        models.storage.new(self.bm)
+        models.storage.save()
+        saved = ""
+        with open("file.json", "r") as jsonf:
+            saved = jsonf.read()
+            self.assertIn(f"BaseModel.{self.bm.id}", saved)
+
+    def test_reload(self):
+        """Test if the reload method deserializes the json to __objects"""
+        models.storage.new(self.bm)
+        models.storage.save()
+        models.storage.reload()
+        objs = FileStorage._FileStorage__objects
+        self.assertIn(f"BaseModel.{self.bm.id}", objs)
 
 
 if __name__ == "__main__":

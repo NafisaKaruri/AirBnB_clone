@@ -40,7 +40,7 @@ class TestUser(unittest.TestCase):
         a = User()
         self.assertEqual(a.first_name, "")
 
-    def test_first_name(self):
+    def test_last_name(self):
         """Test if last_name is intialize with an empty string"""
         a = User()
         self.assertEqual(a.last_name, "")
