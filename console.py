@@ -22,25 +22,21 @@ class HBNBCommand(cmd.Cmd):
                'City', 'Amenity', 'Place', 'Review']
 
     def do_quit(self, arg):
-        """Quit command to exit the program
-        """
+        """Quit command to exit the program"""
         return True
 
     def do_EOF(self, arg):
-        """EOF commant to exit the program
-        """
+        """EOF commant to exit the program"""
         print()
         return True
 
     def emptyline(self):
-        """an empty line + ENTER: shouldn’t execute anything
-        """
+        """an empty line + ENTER: shouldn’t execute anything"""
         pass
 
     def do_create(self, line):
         """Creates a new instance of a class.
-        Usage: create <className>
-        """
+        Usage: create <className>"""
         # split the line into a list of arguments
         args = line.split()
 
@@ -56,8 +52,7 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, line):
         """Prints the string representation of an instance
 based on the class name and id.
-        Usage: show <className> <id>
-        """
+        Usage: show <className> <id>"""
         args = line.split()
 
         if len(args) == 0:
@@ -75,8 +70,7 @@ based on the class name and id.
 
     def do_destroy(self, line):
         """Deletes an instance based on the class name and id.
-        Usage: destroy <className> <id>
-        """
+        Usage: destroy <className> <id>"""
         args = line.split()
 
         if len(args) == 0:
@@ -96,8 +90,7 @@ based on the class name and id.
     def do_all(self, line):
         """Prints all string representation of all instances
 based or not on the class name.
-        Usage: all [<className>]
-        """
+        Usage: all [<className>]"""
         args = line.split()
 
         if len(args) > 0 and args[0] not in self.classes:
@@ -111,8 +104,7 @@ based or not on the class name.
     def do_update(self, line):
         """Updates an instance based on the class name and id
 by adding or updating attribute.
-        Usage: update <className> <id> <attributeName> "<attributeValue>"
-        """
+        Usage: update <className> <id> <attributeName> "<attributeValue>" """
         args = line.split()
 
         if len(args) == 0:
@@ -139,8 +131,7 @@ by adding or updating attribute.
             instance.save()
 
     def count(self, cls):
-        """Retrieves all instances of a class
-        """
+        """Retrieves all instances of a class"""
         if cls not in self.classes:
             print("** class doesn't exist **")
         else:
@@ -151,8 +142,7 @@ by adding or updating attribute.
             print(counter)
 
     def parameters(self, args):
-        """Gets the parameters as a string
-        """
+        """Gets the parameters as a string"""
         string = [args[0]]  # className
         pattern = re.compile(r'\((.*)\)')
         arguments = pattern.findall(args[1])
@@ -160,8 +150,7 @@ by adding or updating attribute.
         return " ".join(string)
 
     def default(self, line):
-        """Handles unrecognized commands
-        """
+        """Handles unrecognized commands"""
         args = line.split('.')
         if len(args) == 2:
             if args[1] == "all()":

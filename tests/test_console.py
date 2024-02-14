@@ -35,7 +35,7 @@ class TestConsole(unittest.TestCase):
             self.assertEqual(f.getvalue(),
                              '\nDocumented commands (type help <topic>):\n' +
                              '========================================\n' +
-                             'EOF  all  create  destroy  help  quit' +
+                             'EOF  all  create  destroy  help  quit ' +
                              ' show  update\n\n')
         with patch('sys.stdout', new=StringIO()) as f:
             for cmd in self.commands:
