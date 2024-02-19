@@ -4,6 +4,9 @@
 	width:100%;
 	border:1px solid #DDDDDD;
 	border-radius:4px;
+	display:inline-grid;
+	align-content:center;
+	justify-items:end;
 }
 
 button {

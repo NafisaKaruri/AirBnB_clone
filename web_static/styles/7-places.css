@@ -1,6 +1,15 @@
+.places {
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:center;
+}
+
 .places h1 {
 	text-align:left;
 	font-size:30px;
+	width:100%;
+	margin-bottom:auto;
+	margin-left:1%;
 }
 
 .places article {
@@ -14,4 +23,5 @@
 .places article h2 {
 	font-size:30px;
 	text-align:center;
+	margin:auto;
 }
