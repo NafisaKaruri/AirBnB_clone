@@ -22,7 +22,9 @@
 
 .places article h2 {
 	font-size:30px;
-	text-align:center;
+	text-align:end;
+	display:inline-block;
+	width:65%;
 	margin:auto;
 }
 
@@ -33,6 +35,10 @@
 	min-width:60px;
 	height:60px;
 	font-size:30px;
+	display:grid;
+	float:right;
+	align-items:center;
+	justify-content:center;
 }
 
 .information {
@@ -41,6 +47,7 @@
 	border-bottom:1px solid #DDDDDD;
 	display:flex;
 	justify-content:space-around;
+	margin-top:40px;
 }
 
 .max_guest {

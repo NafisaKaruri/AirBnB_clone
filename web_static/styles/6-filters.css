@@ -8,7 +8,7 @@
 	align-items:center;
 }
 
-button {
+.filters button {
 	font-size:18px;
 	background-color:#FF5A5F;
 	color:#FFFFFF;
@@ -21,30 +21,30 @@ button {
 	margin-left:auto;
 }
 
-button:hover {
+.filters button:hover {
 	opacity:0.9;
 }
 
-.locations {
+.filters .locations {
 	height:100%;
 	width:25%;
 	border-right:1px solid #DDDDDD;
 }
 
-.amenities {
+.filters .amenities {
 	height:100%;
 	width:25%;
 }
 
-.amenities h3,
-.locations h3 {
+.filters .amenities h3,
+.filters .locations h3 {
 	font-weight:600;
 	margin-bottom:0;
 	padding-left:20%;
 }
 
-.amenities h4,
-.locations h4 {
+.filters .amenities h4,
+.filters .locations h4 {
 	font-weight:400;
 	font-size:14px;
 	margin-top:0;
@@ -54,6 +54,7 @@ button:hover {
 .popover {
 	display:none;
 	background-color:#FAFAFA;
+	backface-visibility:hidden;
 	width:auto;
 	border:1px solid #DDDDDD;
 	border-radius:4px;
@@ -62,6 +63,7 @@ button:hover {
 
 .popover ul {
 	padding-left:20px;
+	margin-top:0;
 }
 
 .popover li {
@@ -73,7 +75,7 @@ button:hover {
 	margin-bottom:0;
 }
 
-.locations:hover .popover,
-.amenities:hover .popover {
+.filters .locations:hover .popover,
+.filters .amenities:hover .popover {
 	display:block;
 }
